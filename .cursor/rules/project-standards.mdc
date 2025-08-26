@@ -1,0 +1,32 @@
+---
+description: 터보레포 프로젝트 개발 표준 및 가이드라인
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# 터보레포 프로젝트 표준
+
+## 코드 스타일
+
+- 한국어 UI와 주석 사용
+- TypeScript 필수 사용
+- pnpm 패키지 매니저 사용
+- 모든 새 파일은 세미콜론과 더블 쿼트 사용
+
+## 프로젝트 구조
+
+- 새 앱은 `./create-new-app.sh` 스크립트 사용
+- shadcn/ui 컴포넌트는 `packages/ui`에 추가
+- 공통 설정은 `packages/` 디렉토리 활용
+
+## 명령어
+
+- 개발: `pnpm dev:앱이름` 또는 `pnpm dev --filter=앱이름`
+- 빌드: `pnpm build --filter=앱이름`
+- 컴포넌트 추가: `pnpm dlx shadcn@latest add 컴포넌트명 -c packages/ui`
+
+## 반응형 디자인
+
+- 기본 다크 테마 사용
+- `useResponsive` 훅과 반응형 컴포넌트 활용
+- 모바일 우선 접근법

@@ -1,0 +1,43 @@
+---
+description: 패키지 및 의존성 관리 가이드라인
+globs: ["**/package.json", "pnpm-*.yaml"]
+alwaysApply: false
+---
+
+# 패키지 관리 가이드
+
+## pnpm 워크스페이스 사용
+
+- 모든 패키지 명령어는 `pnpm` 사용
+- 워크스페이스 의존성은 `workspace:*` 프로토콜 사용
+
+## 공통 의존성
+
+- `@workspace/ui`: shadcn/ui 컴포넌트 라이브러리
+- `@workspace/eslint-config`: 공통 ESLint 설정
+- `@workspace/typescript-config`: 공통 TypeScript 설정
+
+## 새 의존성 추가
+
+```bash
+# 특정 앱에 추가
+pnpm add 패키지명 --filter=앱이름
+
+# 루트에 추가 (개발 도구)
+pnpm add -D 패키지명
+
+# UI 패키지에 추가
+pnpm add 패키지명 --filter=@workspace/ui
+```
+
+## shadcn/ui 컴포넌트
+
+```bash
+# 공통 UI 패키지에 추가
+pnpm dlx shadcn@latest add 컴포넌트명 -c packages/ui
+```
+
+## 버전 관리
+
+- Node.js >=20 필수
+- 메이저 의존성 업데이트 전 전체 빌드 테스트
